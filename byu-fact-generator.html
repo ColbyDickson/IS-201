@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYU Football Fact Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #002e5d 0%, #00AEEF 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #002e5d;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .fact-display {
+            background: #f8f9fa;
+            border-left: 5px solid #002e5d;
+            padding: 30px;
+            margin: 30px 0;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .fact-text {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #333;
+            font-style: italic;
+        }
+
+        .generate-btn {
+            background: #002e5d;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .generate-btn:hover {
+            background: #00AEEF;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 174, 239, 0.4);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .counter {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #002e5d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            color: #00AEEF;
+        }
+
+        .emoji {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🏈</div>
+        <h1>BYU Football Facts</h1>
+        <p class="subtitle">Click to discover amazing facts about BYU Football history!</p>
+        
+        <div class="fact-display">
+            <p class="fact-text" id="factText">Click the button below to generate a random BYU Football fact!</p>
+        </div>
+        
+        <button class="generate-btn" onclick="generateFact()">Generate Random Fact</button>
+        
+        <p class="counter">Facts Generated: <span id="counter">0</span></p>
+        
+        <a href="scratch.html" class="back-link">← Back to BYU Football Page</a>
+    </div>
+
+    <script>
+        const facts = [
+            "BYU won the National Championship in 1984 with a perfect 13-0 record, defeating Michigan 24-17 in the Holiday Bowl.",
+            "LaVell Edwards coached BYU for 29 seasons (1972-2000) and won 257 games, making him one of college football's winningest coaches.",
+            "Ty Detmer won the Heisman Trophy in 1990, becoming BYU's first and only Heisman winner.",
+            "Steve Young, who played at BYU from 1980-1983, went on to become a Hall of Fame quarterback in the NFL.",
+            "Jim McMahon set 70 NCAA records during his time at BYU and led the team to a Holiday Bowl victory in 1980.",
+            "BYU joined the Big 12 Conference in 2023, marking a new era in the program's history.",
+            "LaVell Edwards Stadium, originally named Cougar Stadium, has a capacity of 63,470 and opened in 1964.",
+            "BYU has produced over 50 NFL draft picks, including Zach Wilson who was selected 2nd overall in 2021.",
+            "The Cougars have won 23 conference championships throughout their football history.",
+            "Taysom Hill became one of the most versatile players in BYU history, playing quarterback, Tight End, and special teams in the NFL.",
+            "BYU's 1984 National Championship team featured quarterback Robbie Bosco, who threw for over 3,800 yards.",
+            "The Cougars have appeared in 37 bowl games, winning 15 of them.",
+            "BYU was an independent program from 2011-2022 before joining the Big 12 Conference.",
+            "Puka Nacua was a standout WR at BYU before becoming an NFL star.",
+            "Fred Warner, BYU linebacker, became a first-team All-Pro selection in the NFL.",
+            "The BYU-Utah rivalry, known as the 'Holy War,' is one of college football's most intense rivalries.",
+            "BYU's offense under LaVell Edwards revolutionized college football with its innovative passing attack.",
+            "The Cougars reached the Big 12 Championship game in their third season in the conference (2025).",
+            "BYU has had 13 consensus All-Americans in program history.",
+            "The largest crowd ever at LaVell Edwards Stadium was 64,794 for a game against Utah in 2025."
+        ];
+
+        let count = 0;
+
+        function generateFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factText = document.getElementById('factText');
+            const counter = document.getElementById('counter');
+            
+            // Add fade effect
+            factText.style.opacity = '0';
+            
+            setTimeout(() => {
+                factText.textContent = facts[randomIndex];
+                factText.style.opacity = '1';
+                count++;
+                counter.textContent = count;
+            }, 300);
+        }
+
+        // Add smooth opacity transition
+        document.getElementById('factText').style.transition = 'opacity 0.3s ease';
+    </script>
+</body>
+</html>
